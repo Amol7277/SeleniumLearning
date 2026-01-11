@@ -2,6 +2,9 @@ import time
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.support import e
 
 
 def test_VWO_login_error():
@@ -22,3 +25,6 @@ def test_VWO_login_error():
     upgrade = driver.find_element(By.ID,"upgrade")
 
     assert "Your free trial has expired\nUpgrade Now!" == upgrade.text
+
+    # WebDriverWait(driver, timeout=3).until(EC.visibility_of_element_located())
+    # WebDriverWait(driver=driver,poll_frequency= 5, timeout=3, ignored_exceptions=).until(EC.visibility_of_element_located())
