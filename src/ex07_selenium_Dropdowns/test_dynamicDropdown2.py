@@ -14,7 +14,21 @@ from selenium.webdriver.common.keys import Keys
 def test_dynamicDropdown2():
     driver=webdriver.Chrome()
     driver.maximize_window()
-    driver.get("https://www.spicejet.com/")
+    # driver.get("https://google.com")
+    # dd = driver.find_element(By.NAME,'q')
+    # time.sleep(2)
+    # action = ActionChains(driver=driver)
+    # time.sleep(2)
+    # action.move_to_element(dd).send_keys_to_element(dd,"spicejet").perform()
+    # time.sleep(2)
+    # action.key_down(Keys.ARROW_DOWN).key_down(Keys.ENTER).perform()
+    #
+    # print("Test Passed")
+
+
+    driver.get("https://spicejet.com/")
+
+    time.sleep(10)
 
     fromCity= driver.find_element(By.XPATH,"//div[@data-testid='to-testID-origin']")
     ToCity= driver.find_element(By.XPATH,"//div[@data-testid='to-testID-destination']")
@@ -25,6 +39,5 @@ def test_dynamicDropdown2():
     time.sleep(2)
 
     action.move_to_element(ToCity).click().send_keys_to_element(ToCity,"BOM").perform()
-
 
     time.sleep(10)
