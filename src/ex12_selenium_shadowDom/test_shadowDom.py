@@ -13,6 +13,7 @@ def test_shadowDom():
     chrome_option = Options()
     chrome_option.add_argument("--incognito")
 
+    webdriver.Chrome()
     driver = webdriver.Chrome(chrome_option)
     driver.maximize_window()
     driver.get("https://selectorshub.com/xpath-practice-page/")
@@ -23,21 +24,33 @@ def test_shadowDom():
 
     time.sleep(2)
 
-    shadow_host1 = driver.find_element(By.ID,"userName")
-    shadow_root1 = shadow_host1.shadow_root
-
-    name = shadow_root1.find_element(By.ID,"kils")
-    name.send_keys("Test")
+    kilsinput = driver.execute_script("return document.querySelector('div#userName').shadowRoot.querySelector('#kils')")
+    kilsinput.send_keys("Test")
 
     time.sleep(2)
+    pizza_input = driver.execute_script("return document.querySelector('div#userName').shadowRoot.querySelector('div#app2').shadowRoot.querySelector('#pizza')")
+    pizza_input.send_keys("test2")
 
-    shadow_host2 = shadow_root1.find_element(By.ID,"app2")
-    shadow_root2 = shadow_host2.shadow_root
 
-    pizzaname = shadow_root2.find_element(By.ID,"pizza")
-    pizzaname.send_keys("Test")
 
-    time.sleep(2)
+
+
+
+    # shadow_host1 = driver.find_element(By.ID,"userName")
+    # shadow_root1 = shadow_host1.shadow_root
+    #
+    # name = shadow_root1.find_element(By.ID,"kils")
+    # name.send_keys("Test")
+    #
+    # time.sleep(2)
+    #
+    # shadow_host2 = shadow_root1.find_element(By.ID,"app2")
+    # shadow_root2 = shadow_host2.shadow_root
+    #
+    # pizzaname = shadow_root2.find_element(By.ID,"pizza")
+    # pizzaname.send_keys("Test")
+    #
+    # time.sleep(2)
 
     # shadow_host3 = shadow_root1.find_element(By.ID,"concepts")
     # shadow_root3 = shadow_host3.shadow_root
