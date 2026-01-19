@@ -18,9 +18,9 @@ def test_shadowDom():
     driver.maximize_window()
     driver.get("https://selectorshub.com/xpath-practice-page/")
     time.sleep(2)
-    dom = driver.find_element(By.XPATH,"//h6[contains(text(),'Shadow DOM')]")
+    dom = driver.find_element(By.XPATH, "//h6[contains(text(),'Shadow DOM')]")
 
-    driver.execute_script("arguments[0].scrollIntoView(true);",dom)
+    driver.execute_script("arguments[0].scrollIntoView(true);", dom)
 
     time.sleep(2)
 
@@ -28,13 +28,9 @@ def test_shadowDom():
     kilsinput.send_keys("Test")
 
     time.sleep(2)
-    pizza_input = driver.execute_script("return document.querySelector('div#userName').shadowRoot.querySelector('div#app2').shadowRoot.querySelector('#pizza')")
+    pizza_input = driver.execute_script(
+        "return document.querySelector('div#userName').shadowRoot.querySelector('div#app2').shadowRoot.querySelector('#pizza')")
     pizza_input.send_keys("test2")
-
-
-
-
-
 
     # shadow_host1 = driver.find_element(By.ID,"userName")
     # shadow_root1 = shadow_host1.shadow_root
